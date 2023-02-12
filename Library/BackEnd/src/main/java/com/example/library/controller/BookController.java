@@ -1,5 +1,6 @@
 package com.example.library.controller;
 
+import com.example.library.model.Account;
 import com.example.library.model.BookModel;
 import com.example.library.service.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,10 @@ public class BookController {
         return bookServices.getAllBook();
     }
 
-//    @PostMapping("/getMyBook")
-//    public List<BookModel> getMyBook(@RequestBody BookModel request){
-//        return bookServices.getMyBook(request.getUser_id());
-//    }
+    @PostMapping("/getMyBook")
+    public List<BookModel> getMyBook(@RequestBody Account request){
+        return bookServices.getMyBook(request.getId());
+    }
 
     @GetMapping("/getBook")
     public BookModel getBook(@RequestParam(name="id", defaultValue = "1")Long id){
@@ -36,10 +37,10 @@ public class BookController {
         bookServices.createBook(request);
     }
 
-//    @PostMapping("/rentBook")
-//    public void rentBook(@RequestBody BookModel request) {
-//        bookServices.rentBook(request);
-//    }
+    @PostMapping("/rentBook")
+    public void rentBook(@RequestBody BookModel request) {
+        bookServices.rentBook(request);
+    }
 
 //
 //        @PostMapping("/create")

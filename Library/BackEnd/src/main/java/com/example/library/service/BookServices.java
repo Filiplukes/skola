@@ -22,12 +22,13 @@ public class BookServices {
         bookRepository.save(book);
     }
 
-//    public List<BookModel> getMyBook(Long bookModel){
-//        return bookRepository.findByUserId(bookModel);
-//    }
+   public List<BookModel> getMyBook(Long accoutnId){
+       System.out.println(accoutnId);
+       return bookRepository.findByUserId(accoutnId);
+   }
     public void rentBook(BookModel book){
        BookModel updateBook = getBook(book.getId());
-       updateBook.setUser_id(book.getUser_id());
+       updateBook.setUserId(book.getUserId());
        bookRepository.save(updateBook);
     }
 }

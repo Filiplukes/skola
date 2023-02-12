@@ -15,8 +15,8 @@ public class BookModel {
     private String bookname;
     private String author;
     private Date dateRent;
-    private Long genre_id;
-    private Long user_id;
+    private Long genreId;
+    private Long userId;
 
     public BookModel() {
     }
@@ -24,21 +24,20 @@ public class BookModel {
     public BookModel( String bookname, String author) {
         this.bookname = bookname;
         this.author = author;
-        this.genre_id = genre_id;
     }
 
-    public BookModel( String bookname, String author, Long genre_id) {
+    public BookModel( String bookname, String author, Long genreId) {
         this.bookname = bookname;
         this.author = author;
-        this.genre_id = genre_id;
+        this.genreId = genreId;
     }
 
 
-    public BookModel(Long id, String bookname, String author, Long genre_id) {
+    public BookModel(Long id, String bookname, String author, Long genreId) {
         this.id = id;
         this.bookname = bookname;
         this.author = author;
-        this.genre_id = genre_id;
+        this.genreId = genreId;
     }
 
     public Long getId() {
@@ -61,20 +60,20 @@ public class BookModel {
         return author;
     }
 
-    public void setGenre_id(Long genre_id) {
-        this.genre_id = genre_id;
+    public void setGenreId(Long genreId) {
+        this.genreId = genreId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getGenre_id() {
-        return genre_id;
+    public Long getGenreId() {
+        return genreId;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
     public void setAuthor(String author) {
