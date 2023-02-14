@@ -1,7 +1,10 @@
 package com.example.library.service;
 
+import com.example.library.DTO.BookDTO;
 import com.example.library.model.BookModel;
+import com.example.library.model.ConectGenreBook;
 import com.example.library.repository.BookRepository;
+import com.example.library.repository.ConectGenreRepository;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +13,12 @@ import java.util.*;
 public class BookServices {
     @Resource
     BookRepository bookRepository;
+    @Resource
+    private final ConectGenreRepository conectGenreRepository;
+
+    public BookServices(ConectGenreRepository conectGenreRepository) {
+        this.conectGenreRepository = conectGenreRepository;
+    }
 
     public List<BookModel> getAllBook() {
         return bookRepository.findAll();
@@ -18,12 +27,17 @@ public class BookServices {
         return bookRepository.getReferenceById(id);
     }
 
-    public void createBook(BookModel book){
-        bookRepository.save(book);
+    public void createBook(BookDTO book){
+        List<ConectGenreBook> genres = book.getlistGenre();
+        long idBook = bookRepository.save(book.getBookModel()).getId();
+
+        for (ConectGenreBook genre : genres) {
+           genre.setIdBook(idBook);
+           conectGenreRepository.save(genre);
+        }
     }
 
    public List<BookModel> getMyBook(Long accoutnId){
-       System.out.println(accoutnId);
        return bookRepository.findByUserId(accoutnId);
    }
     public void rentBook(BookModel book){

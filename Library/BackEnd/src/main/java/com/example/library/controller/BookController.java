@@ -1,7 +1,9 @@
 package com.example.library.controller;
 
+import com.example.library.DTO.BookDTO;
 import com.example.library.model.Account;
 import com.example.library.model.BookModel;
+import com.example.library.model.Genre;
 import com.example.library.service.BookServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +35,10 @@ public class BookController {
     }
 
     @PostMapping("/setBook")
-    public void createBook(@RequestBody BookModel request) {
-        bookServices.createBook(request);
+    public void createBook(@RequestBody Object request) {
+        BookDTO book = new BookDTO(request);
+        bookServices.createBook(book);
+
     }
 
     @PostMapping("/rentBook")

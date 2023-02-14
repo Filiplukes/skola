@@ -22,7 +22,6 @@ public class GenreService {
     }
 
     public void createGenre(Genre genre){
-
         genreRepository.save(genre);
     }
 

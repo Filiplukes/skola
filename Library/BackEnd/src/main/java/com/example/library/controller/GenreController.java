@@ -1,12 +1,15 @@
 package com.example.library.controller;
 
+import com.example.library.model.BookModel;
 import com.example.library.model.Genre;
 import com.example.library.service.GenreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/genre")
+@RequestMapping("api/genre")
 public class GenreController {
 
     @Autowired
@@ -16,6 +19,11 @@ public class GenreController {
     @GetMapping("/getGenre")
     public Genre getGenre(@RequestParam(name="id", defaultValue = "1")Long id){
         return genreService.getGenre(id);
+    }
+
+    @GetMapping("/getAllGenre")
+    public List<Genre> getAllBook(){
+        return genreService.getAllGenre();
     }
 
     @PostMapping("/setGenre")

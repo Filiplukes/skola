@@ -16,6 +16,9 @@ public class ConectGenreBook {
     public ConectGenreBook() {
     }
 
+    public ConectGenreBook(Long idGenre) {
+        this.idGenre = idGenre;
+    }
     public ConectGenreBook(Long id, Long idBook, Long idGenre) {
         this.id = id;
         this.idBook = idBook;
@@ -25,6 +28,18 @@ public class ConectGenreBook {
     public ConectGenreBook(Long idBook, Long idGenre) {
         this.idBook = idBook;
         this.idGenre = idGenre;
+    }
+
+    public void setIdBook(Long idBook) {
+        this.idBook = idBook;
+    }
+
+    public Long getIdBook() {
+        return idBook;
+    }
+
+    public Long getIdGenre() {
+        return idGenre;
     }
 
     public Long getId() {
