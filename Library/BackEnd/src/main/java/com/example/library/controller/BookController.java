@@ -24,6 +24,11 @@ public class BookController {
         return bookServices.getAllBook();
     }
 
+    @GetMapping("/getAllBookWithGenre")
+    public List<Object[]> getAllBookWithGenre(){
+        return bookServices.getAllBookWithGenre();
+    }
+
     @PostMapping("/getMyBook")
     public List<BookModel> getMyBook(@RequestBody Account request){
         return bookServices.getMyBook(request.getId());

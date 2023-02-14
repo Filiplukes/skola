@@ -23,6 +23,11 @@ public class BookServices {
     public List<BookModel> getAllBook() {
         return bookRepository.findAll();
     }
+
+    public List<Object[]> getAllBookWithGenre() {
+        return bookRepository.findAllBooksWithGenres();
+    }
+
     public BookModel getBook(Long id) {
         return bookRepository.getReferenceById(id);
     }
