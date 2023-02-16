@@ -1,6 +1,7 @@
 package com.example.library.controller;
 
 import com.example.library.DTO.BookDTO;
+import com.example.library.DTO.BookWithGenresDTO;
 import com.example.library.model.Account;
 import com.example.library.model.BookModel;
 import com.example.library.model.Genre;
@@ -25,7 +26,7 @@ public class BookController {
     }
 
     @GetMapping("/getAllBookWithGenre")
-    public List<Object[]> getAllBookWithGenre(){
+    public List<BookWithGenresDTO> getAllBookWithGenre(){
         return bookServices.getAllBookWithGenre();
     }
 
@@ -33,6 +34,17 @@ public class BookController {
     public List<BookModel> getMyBook(@RequestBody Account request){
         return bookServices.getMyBook(request.getId());
     }
+
+    @PostMapping("/getMyBookWithGenre")
+    public List<BookWithGenresDTO> getMyBookWithGenre(@RequestBody Account request){
+        return bookServices.findByUserIdWithGenres(request.getId());
+    }
+
+    @GetMapping("/findRandomBookByAuthor")
+    public BookWithGenresDTO findRandomBookByAuthor(@RequestParam(name="autor", defaultValue = "")String autor){
+        return bookServices.findRandomBookByAuthor(autor);
+    }
+
 
     @GetMapping("/getBook")
     public BookModel getBook(@RequestParam(name="id", defaultValue = "1")Long id){

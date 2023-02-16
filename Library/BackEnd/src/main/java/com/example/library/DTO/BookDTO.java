@@ -17,7 +17,6 @@ public class BookDTO {
     private Long userId;
 
     private List <ConectGenreBook> genres;
-    private String[] genresBook;
 
     public BookDTO() {
     }
@@ -39,11 +38,6 @@ public class BookDTO {
         this.author = author;
     }
 
-    public BookDTO( String bookname, String author, String [] genresBook) {
-        this.bookname = bookname;
-        this.author = author;
-        this.genresBook = genresBook;
-    }
 
     public BookDTO( String bookname, String author,List <ConectGenreBook> genre) {
         this.bookname = bookname;
